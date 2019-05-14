@@ -49,16 +49,14 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\New folder\UnitTest1.cs">
-      <Link>UnitTest1.cs</Link>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CustomList.csproj">
+    <ProjectReference Include="..\CustomList\CustomList.csproj">
       <Project>{6ee11808-38ee-41ac-8eed-040815cca422}</Project>
       <Name>CustomList</Name>
     </ProjectReference>
