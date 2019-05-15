@@ -19,10 +19,8 @@ namespace CustomList
             capacity = 4;
             items = new T[capacity];
             counteri = 0;
-
         }
         public T this[int i]
-
         {
             get { return items[counteri]; }
             set { items[counteri] = value; }
@@ -50,7 +48,8 @@ namespace CustomList
         }
         public void RemoveItemFromList(T item)
         {
-
+            while()
+            
         }
     }
 }
