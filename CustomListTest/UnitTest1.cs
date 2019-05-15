@@ -17,7 +17,6 @@ namespace CustomListTest
             string expected;
 
             //Act
-         
             andrewsList.AddToMyList(myName);
             actual = andrewsList[0];
             expected = "andrew";
@@ -97,88 +96,134 @@ namespace CustomListTest
 
             //Assert
             Assert.AreEqual(expected, actual);
-
-
         }
-        //[TestMethod]
-        //public void RemovingNumberFromMyList_RemoveNumber9FromList_RemoveIndex1FromList()
-        //{
-        //    Arrange
-        //    myList<int> andrewsList = new myList<int>();
-        //    int removingNumber = 9;
-        //    int actual;
-        //    int expected;
+        [TestMethod]
+        public void RemovingNumberFromMyList_RemoveNumber9FromList_RemoveIndex1FromList()
+        {
+            //Arrange
+            myList<int> andrewsList = new myList<int>();
+            int removingNumber = 9;
+            int actual;
+            int expected;
 
-        //    Act
-        //    andrewsList.AddToList(7);
-        //    andrewsList.AddToList(9);
-        //    andrewsList.RemoveFromList(removingNumber);
-        //    expected = 7;
-        //    actual = andrewsList[0];
+            //Act
+            andrewsList.AddToMyList(7);
+            andrewsList.AddToMyList(9);
+            andrewsList.RemoveItemFromList(removingNumber);
+            expected = 7;
+            actual = andrewsList[0];
 
-        //    Assert
-        //    Assert.AreEqual(expected, actual);
-        //}
-        //[TestMethod]
-        //public void RemoveStringFromList_RemoveStringAndrewFromList_ListisNowJustStudent()
-        //{
-        //    Arrange
-        //    myList<string> andrewsList = new myList<string>();
-        //    string andrew = "andrew";
-        //    string student = "student";
-        //    string actual;
-        //    string expected;
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void RemoveStringFromList_RemoveStringAndrewFromList_ListisNowJustStudent()
+        {
+            //Arrange
+            myList<string> andrewsList = new myList<string>();
+            string andrew = "andrew";
+            string student = "student";
+            string actual;
+            string expected;
 
-        //    Act
-        //    andrewsList.AddToList(andrew);
-        //    andrewsList.AddToList(student);
-        //    andrewsList.RemoveFromList(andrew);
-        //    expected = andrewsList[0];
-        //    actual = student;
+            //Act
+            andrewsList.AddToMyList(andrew);
+            andrewsList.AddToMyList(student);
+            andrewsList.RemoveItemFromList(andrew);
+            expected = "student";
+            actual = andrewsList[0];
 
-        //    Assert
-        //    Assert.AreEqual(expected, actual);
-        //}
-        //[TestMethod]
-        //public void RemovingDoubleFromList_Removing20fromList_ListDoesNotContain20()
-        //{
-        //    Arrange
-        //    myList<double> andrewsList = new myList<double>();
-        //    double twenty = 20;
-        //    double thirty = 30;
-        //    double expected;
-        //    double actual;
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void RemovingItemFromList_Removingindex3fromList_ListMovesDownAnIndexAt3()
+        {
+            //Arrange
+            myList<double> andrewsList = new myList<double>();
+            double twenty = 20;
+            double thirty = 30;
+            double ten = 10;
+            double fourty = 40;
+            double fifty = 50;
+            double expected;
+            double actual;
 
-        //    act
-        //    andrewsList.AddToList(twenty);
-        //    andrewsList.AddToList(thirty);
-        //    andrewsList.RemoveFromList(twenty);
-        //    expected = thirty;
-        //    actual = andrewsList[0];
+            //act
+            andrewsList.AddToMyList(ten);
+            andrewsList.AddToMyList(twenty);
+            andrewsList.AddToMyList(thirty);
+            andrewsList.AddToMyList(fourty);
+            andrewsList.AddToMyList(fifty);
+            andrewsList.RemoveItemFromList(thirty);
+            expected = fifty;
+            actual = andrewsList[3];
 
-        //    Assert
-        //    Assert.AreEqual(expected, actual);
-        //}
-        //[TestMethod]
-        //public void RemoveBoolFromList_RemoveBoolTrue_ListofFalse()
-        //{
-        //    Arrange
-        //    bool mine = true;
-        //    bool yours = false;
-        //    myList<bool> andrewsList = new myList<bool>();
-        //    bool actual;
-        //    bool expected;
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void RemoveBoolFromList_RemoveBoolTrue_ListofFalse()
+        {
+            //Arrange
+            bool mine = true;
+            bool yours = false;
+            bool his = false;
+            bool hers = true;
+            myList<bool> andrewsList = new myList<bool>();
+            bool actual;
+            bool expected;
 
-        //    act
-        //    andrewsList.AddToList(mine);
-        //    andrewsList.AddToList(yours);
-        //    andrewsList.RemoveFromList(mine);
-        //    expected = false;
-        //    actual = andrewsList[0];
-        //    Assess
-        //    Assert.AreEqual(expected, actual);
+            //act
+            andrewsList.AddToMyList(mine);
+            andrewsList.AddToMyList(hers);
+            andrewsList.AddToMyList(his);
+            andrewsList.AddToMyList(yours);
+            andrewsList.RemoveItemFromList(mine);
+            andrewsList.RemoveItemFromList(hers);
+            expected = false;
+            actual = andrewsList[0];
+            //Assess
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void CapacityDoubledWith10ItemsInList_Removing5Items_5ItemsRemainingAndshiftedOver()
+        {
+            //arrange
+             int one = 1;
+             int two = 2;
+             int three = 3;
+             int four = 4;
+             int five = 5;
+             int six = 6;
+             int expected;
+             int actual;
+            myList<int> andrewsList = new myList<int>();
 
+            //act
+            andrewsList.AddToMyList(one);
+            andrewsList.AddToMyList(two);
+            andrewsList.AddToMyList(three);
+            andrewsList.AddToMyList(four);
+            andrewsList.AddToMyList(five);
+            andrewsList.AddToMyList(five);
+            andrewsList.AddToMyList(five);
+            andrewsList.AddToMyList(five);
+            andrewsList.AddToMyList(five);
+            andrewsList.AddToMyList(six);
+            andrewsList.RemoveItemFromList(five);
+            expected = 6;
+            actual = andrewsList[8];
 
-        //}
+            //Assess
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
+
+        
+
+    
+
+
+
