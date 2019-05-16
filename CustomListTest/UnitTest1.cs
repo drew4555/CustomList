@@ -218,6 +218,68 @@ namespace CustomListTest
             //Assess
             Assert.AreEqual(expected, actual);
         }
+        //[TestMethod]
+        //public void OverloadPlusOperator_addingTwoListsTogether_OneListOfTwoOneListofThree()
+        //{
+        //    int one = 1;
+        //    int two = 2;
+        //    int three = 3;
+        //    int four = 4;
+        //    int five = 5;
+        //    myList<int> andrewlist = new myList<int>();
+        //    myList<int> spaghetti = new myList<int>();
+        //    myList<int> andrewstummy = new myList<int>();
+        //    int expected;
+        //    int actual;
+
+        //    andrewlist.AddToMyList(1);
+        //    andrewlist.AddToMyList(2);
+        //    spaghetti.AddToMyList(3);
+        //    spaghetti.AddToMyList(4);
+        //    spaghetti.AddToMyList(5);
+        //    expected = 4;
+        //    actual = andrewstummy[3];
+            
+        //} 
+        [TestMethod]
+        public void ChangeToString_ChangingListObjectsToString_ChangedAllObjectsToStrings()
+        {
+            string expected = "1";
+            myList<int> andrewslist = new myList<int>();
+            andrewslist[0] = 1;
+
+            string actual = andrewslist.ToString();
+
+            Assert.AreEqual(expected, actual);
+
+        }
+        [TestMethod]
+        public void ChangeToString_ChangingListObjectsToStringVerifyOrder_ChangedAllObjectsToStrings()
+        {
+            string expected = "1 2 3";
+            myList<int> andrewslist = new myList<int>();
+            andrewslist[0] = 1;
+            andrewslist[1] = 2;
+            andrewslist[3] = 3;
+
+            string actual = andrewslist.ToString();
+
+            Assert.AreNotEqual(expected, actual);
+
+        }
+        [TestMethod]
+        public void ChangeToString_UsingToStringMethodWithNothingAddedToList_ResultOfNull()
+        {
+            // Arrange
+            myList<int> andrewslist = new myList<int>();
+            string expected = null;
+
+            // Act
+            string actual = andrewslist.ToString();
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
 

@@ -20,6 +20,7 @@ namespace CustomList
             andrewsList.AddToMyList(18);
 
             andrewsList.RemoveItemFromList(15);
+            andrewsList.RemoveItemFromList(9);
         }
     }
 }

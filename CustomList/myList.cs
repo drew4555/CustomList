@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomList
 {
-    public class myList<T>
+    public class myList<T> : IEnumerable <T>
     {
 
         T[] mylist;
@@ -55,7 +56,7 @@ namespace CustomList
             }
             return -1;
         }
-        public void RemoveItemFromList(T item)//refactor to if not found item skip
+        public void RemoveItemFromList(T item)
         {
             int indexlocation = SearchThroughList(item);
             if (indexlocation != -1)
@@ -77,6 +78,26 @@ namespace CustomList
                 countoflist--;
 
             }
+        }
+        public override string ToString()
+        {
+            for (int i = 0; i < countoflist; i++)
+            {
+                
+                
+
+           
+
+            }
+        }
+        public IEnumerator<T> GetEnumerator()
+        {
+            return ((IEnumerable<T>)mylist).GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
         }
     }
 }
