@@ -9,31 +9,29 @@ namespace CustomList
     public class myList<T>
     {
 
-        T[] items;
+        T[] mylist;
         public int CountofList { get { return countoflist; } }
-        private int counteri;
         private int countoflist;
         public int capacity { get; set; }
         public myList()
         {
             capacity = 4;
-            items = new T[capacity];
-            counteri = 0;
+            mylist = new T[capacity];
+            countoflist = 0;
         }
         public T this[int i]
         {
-            get { return items[counteri]; }
-            set { items[counteri] = value; }
+            get { return mylist[i]; }
+            set { mylist[i] = value; }
         }
 
         public void AddToMyList(T item)
         {
-            EnsureCapacity();
-            items[counteri] = item;
+            mylist[countoflist] = item;
             countoflist++;
-            counteri++;
+            EnsureCapacity();
         }
-        public void EnsureCapacity()
+        private void EnsureCapacity()
         {
             if (countoflist == capacity)
             {
@@ -41,15 +39,44 @@ namespace CustomList
                 T[] newArray = new T[capacity];
                 for (int b = 0; b < countoflist; b++)
                 {
-                    newArray[b] = items[b];
+                    newArray[b] = mylist[b];
                 }
-                items = newArray;
+                mylist = newArray;
             }
         }
-        public void RemoveItemFromList(T item)
+        private int SearchThroughList(T item)
         {
-            while()
-            
+            for (int a = 0; a < countoflist; a++)
+            {
+                if (mylist[a].Equals(item))
+                {
+                    return a;
+                }
+            }
+            return -1;
+        }
+        public void RemoveItemFromList(T item)//refactor to if not found item skip
+        {
+            int indexlocation = SearchThroughList(item);
+            if (indexlocation != -1)
+            {
+                T[] newArray = new T[capacity];
+                for (int c = 0; c < countoflist; c++)
+                {
+
+                    if (indexlocation <= c)
+                    {
+                        newArray[c] = mylist[c + 1];
+                    }
+                    else
+                    {
+                        newArray[c] = mylist[c];
+                    }
+                }
+                mylist = newArray;
+                countoflist--;
+
+            }
         }
     }
 }
