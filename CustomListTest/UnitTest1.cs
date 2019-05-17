@@ -309,9 +309,45 @@ namespace CustomListTest
             andrewslist[1] = 3;
             andrewslist2[0] = 2;
             andrewslist2[1] = 4;
+            myList<int> actual = andrewslist3;
 
             //act
+            andrewslist3.ZipperDeeDooDah();
 
+            //Assert
+            Assert.AreEqual(andrewslist3[2], 3);
+
+        }
+        [TestMethod]
+        public void TestingZipperMethod_AddingTwoListsTogether_ZippingTwoLists()
+        {
+            //arrange
+            myList<int> andrewslist = new myList<int>();
+            myList<int> andrewslist2 = new myList<int>();
+            myList<int> andrewslist3 = new myList<int>();
+            andrewslist[0] = 1;
+            andrewslist[1] = 3;
+            andrewslist2[0] = 2;
+            andrewslist2[1] = 4;
+
+            //act
+            andrewslist3.ZipperDeeDooDah();
+
+            //Assert
+            Assert.AreNotEqual(andrewslist3[1], 3);
+        }
+        [TestMethod]
+        public void TestingZipperMethod_AddingTwoEmptyListsTogether_RecieveEmptyArray()
+        {
+            //arrange
+            myList<int> andrewslist = new myList<int>();
+            myList<int> andrewslist2 = new myList<int>();
+
+            //act
+            andrewslist2.ZipperDeeDooDah();
+
+            //assert
+            Assert.AreEqual(andrewslist, andrewslist2);
 
         }
     }
