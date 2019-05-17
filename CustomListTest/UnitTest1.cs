@@ -244,13 +244,13 @@ namespace CustomListTest
         [TestMethod]
         public void ChangeToString_ChangingListObjectsToString_ChangedAllObjectsToStrings()
         {
-            string expected = "1";
+            string expected = " 1 ";
             myList<int> andrewslist = new myList<int>();
             andrewslist[0] = 1;
 
             string actual = andrewslist.ToString();
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreNotEqual(expected, actual);
 
         }
         [TestMethod]
@@ -272,7 +272,7 @@ namespace CustomListTest
         {
             // Arrange
             myList<int> andrewslist = new myList<int>();
-            string expected = null;
+            string expected = " ";
 
             // Act
             string actual = andrewslist.ToString();
@@ -280,12 +280,46 @@ namespace CustomListTest
             // Assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void AddingTwoStrings_AddedString1AndString2Together_SumofString1AndString2()
+        {
+            //arrange
+            myList<int> andrewslist = new myList<int>();
+            myList<int> andrewslist2 = new myList<int>();
+            myList<int> andrewslist3 = new myList<int>();
+            andrewslist[0] = 1;
+            andrewslist[1] = 2;
+            andrewslist2[0] = 3;
+            andrewslist2[1] = 4;
+
+            //act
+            andrewslist3 = andrewslist + andrewslist2;
+
+            //assert
+            Assert.AreNotEqual(andrewslist3, andrewslist+andrewslist2);
+        }
+        [TestMethod]
+        public void testingzippermethod_addedtwostringstogether_zippingtwoListsTogether()
+        {
+            //arrange
+            myList<int> andrewslist = new myList<int>();
+            myList<int> andrewslist2 = new myList<int>();
+            myList<int> andrewslist3 = new myList<int>();
+            andrewslist[0] = 1;
+            andrewslist[1] = 3;
+            andrewslist2[0] = 2;
+            andrewslist2[1] = 4;
+
+            //act
+
+
+        }
     }
 }
 
-        
 
-    
+
+
 
 
 

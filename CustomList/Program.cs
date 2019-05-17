@@ -15,7 +15,7 @@ namespace CustomList
             myList<int> andrewsList2 = new myList<int>();
             andrewsList.AddToMyList(3);
             andrewsList2.AddToMyList(6);
-            andrewsList.AddToMyList(9);
+            andrewsList.AddToMyList(6);
             andrewsList2.AddToMyList(12);
             andrewsList.AddToMyList(15);
             andrewsList2.AddToMyList(18);
@@ -24,6 +24,8 @@ namespace CustomList
             //Console.WriteLine(andrewsList.ToString());
             //Console.WriteLine(andrewsList2.ToString());
             //Console.ReadKey(); 
+            myList<int> andrewsList3 = andrewsList - andrewsList2;
+            Console.ReadKey();
         }
         
     }

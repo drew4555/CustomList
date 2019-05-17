@@ -17,10 +17,10 @@ namespace CustomList
         public int capacity { get; set; }
         public myList()
         {       
-            capacity = 4;
+            capacity = 8;
             mylist = new T[capacity];
             mylist2 = new T[capacity];
-            mylist3 = new T[20];
+            mylist3 = new T[capacity];
             countoflist = 0;
         }
         public T this[int i]
@@ -88,11 +88,52 @@ namespace CustomList
             }
             return myStringOveride;
         }
-        public static T operator +(myList<T> mylist, myList<T> mylist2)
+        public static myList<T> operator +(myList<T> mylist, myList<T> mylist2)
         {
-           T mylist3 = mylist + mylist2;
-            return mylist3;
+            myList<T> newlist = new myList<T>();
+            for (int i = 0; i < mylist.countoflist; i++)
+            {
+                newlist.AddToMyList(mylist[i]);
+            }
+            for (int i = 0; i < mylist2.countoflist; i++)
+            {
+                newlist.AddToMyList(mylist2[i]);
+            }
+            return newlist;
         }
+        public static myList<T> operator -(myList<T> mylist, myList<T> mylist2)
+        {
+            myList<T> newlist = new myList<T>();
+            for (int i = 0; i < mylist.countoflist; i++)
+            {
+                newlist.AddToMyList(mylist[i]);
+            }
+                foreach (T item in newlist)
+                {
+                    for(int x=0; x<mylist2.countoflist; x++)
+                    {
+                        if (item.Equals(mylist2[x]))
+                        {
+                            newlist.RemoveItemFromList(item);
+                            mylist2.RemoveItemFromList(item);
+                            for (int b = 0; b < mylist2.countoflist; b++)
+                            {
+                                newlist.AddToMyList(mylist2[b]);
+                            }
+                        }
+                    }
+                    
+                }
+            return newlist;
+        }
+            
+         public void zipperdeedoodah()
+        {
+            for (int index = 0; index < mylist.countoflist; index++)
+            {
+
+            }
+        }   
         public void display()
         {
             Console.WriteLine("{0}", mylist3.ToString());
