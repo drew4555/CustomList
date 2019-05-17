@@ -9,15 +9,18 @@ namespace CustomList
 {
     public class myList<T> : IEnumerable <T>
     {
-
-        T[] mylist;
+        public T[] mylist;
+        public T[] mylist2;
+        public T[] mylist3;
         public int CountofList { get { return countoflist; } }
         private int countoflist;
         public int capacity { get; set; }
         public myList()
-        {
+        {       
             capacity = 4;
             mylist = new T[capacity];
+            mylist2 = new T[capacity];
+            mylist3 = new T[20];
             countoflist = 0;
         }
         public T this[int i]
@@ -25,7 +28,6 @@ namespace CustomList
             get { return mylist[i]; }
             set { mylist[i] = value; }
         }
-
         public void AddToMyList(T item)
         {
             mylist[countoflist] = item;
@@ -64,7 +66,6 @@ namespace CustomList
                 T[] newArray = new T[capacity];
                 for (int c = 0; c < countoflist; c++)
                 {
-
                     if (indexlocation <= c)
                     {
                         newArray[c] = mylist[c + 1];
@@ -76,20 +77,59 @@ namespace CustomList
                 }
                 mylist = newArray;
                 countoflist--;
-
             }
         }
         public override string ToString()
         {
+            string myStringOveride = " ";
             for (int i = 0; i < countoflist; i++)
             {
-                
-                
-
-           
-
+                myStringOveride += mylist[i].ToString() + ", " ;
             }
+            return myStringOveride;
         }
+        public static T operator +(myList<T> mylist, myList<T> mylist2)
+        {
+           T mylist3 = mylist + mylist2;
+            return mylist3;
+        }
+        public void display()
+        {
+            Console.WriteLine("{0}", mylist3.ToString());
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public IEnumerator<T> GetEnumerator()
         {
             return ((IEnumerable<T>)mylist).GetEnumerator();
