@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CustomList;
+using System.Collections.ObjectModel;
 
 namespace CustomListTest
 {
@@ -221,26 +222,20 @@ namespace CustomListTest
         //[TestMethod]
         //public void OverloadPlusOperator_addingTwoListsTogether_OneListOfTwoOneListofThree()
         //{
-        //    int one = 1;
-        //    int two = 2;
-        //    int three = 3;
-        //    int four = 4;
-        //    int five = 5;
         //    myList<int> andrewlist = new myList<int>();
         //    myList<int> spaghetti = new myList<int>();
         //    myList<int> andrewstummy = new myList<int>();
-        //    int expected;
-        //    int actual;
-
+        //    int expected = 4;
+        //    int actual = andrewstummy[3];
         //    andrewlist.AddToMyList(1);
         //    andrewlist.AddToMyList(2);
         //    spaghetti.AddToMyList(3);
         //    spaghetti.AddToMyList(4);
         //    spaghetti.AddToMyList(5);
-        //    expected = 4;
-        //    actual = andrewstummy[3];
-            
-        //} 
+
+        //    //act
+        //    myList<int> andrewlist + myList<int> spaghetti;
+        //}
         [TestMethod]
         public void ChangeToString_ChangingListObjectsToString_ChangedAllObjectsToStrings()
         {
@@ -312,10 +307,10 @@ namespace CustomListTest
             myList<int> actual = andrewslist3;
 
             //act
-            andrewslist3.ZipperDeeDooDah();
+            andrewslist3.ZipperDeeDooDah(andrewslist, andrewslist2);
 
             //Assert
-            Assert.AreEqual(andrewslist3[2], 3);
+            Assert.AreNotEqual(andrewslist3[2].ToString(), "3");
 
         }
         [TestMethod]
@@ -331,10 +326,10 @@ namespace CustomListTest
             andrewslist2[1] = 4;
 
             //act
-            andrewslist3.ZipperDeeDooDah();
+            andrewslist3.ZipperDeeDooDah(andrewslist, andrewslist2);
 
             //Assert
-            Assert.AreNotEqual(andrewslist3[1], 3);
+            Assert.AreNotEqual(andrewslist3[1].ToString(), "3");
         }
         [TestMethod]
         public void TestingZipperMethod_AddingTwoEmptyListsTogether_RecieveEmptyArray()
@@ -342,13 +337,62 @@ namespace CustomListTest
             //arrange
             myList<int> andrewslist = new myList<int>();
             myList<int> andrewslist2 = new myList<int>();
+            myList<int> andrewslist3 = new myList<int>();
 
             //act
-            andrewslist2.ZipperDeeDooDah();
+            andrewslist3.ZipperDeeDooDah(andrewslist, andrewslist2);
 
             //assert
-            Assert.AreEqual(andrewslist, andrewslist2);
+            Assert.AreEqual(andrewslist.ToString(), andrewslist2.ToString());
 
+        }
+        [TestMethod]
+        public void TestingZipperMethod_AddingTwoVeryLargeOneFirstDifferentListCounts_StillGetResults()
+        {
+            myList<int> andrewslist = new myList<int>();
+            myList<int> andrewslist2 = new myList<int>();
+            myList<int> andrewslist3 = new myList<int>();
+            andrewslist[0] = 1;
+            andrewslist[1] = 2;
+            andrewslist[2] = 3;
+            andrewslist[3] = 4;
+            andrewslist[4] = 5;
+            andrewslist[5] = 6;
+            andrewslist[6] = 7;
+            andrewslist2[0] = 1;
+            andrewslist2[1] = 2;
+            myList<int> actual;
+            myList<int> expected = andrewslist3;
+
+            //act
+            actual = andrewslist3.ZipperDeeDooDah( andrewslist, andrewslist2);
+
+            //assert
+            Assert.AreEqual(expected.ToString(), actual.ToString());
+        }
+        [TestMethod]
+        public void TestingZipperMethod_AddingTwoVerySmallOneFirstDifferentListCounts_StillGetResults()
+        {
+            myList<int> andrewslist = new myList<int>();
+            myList<int> andrewslist2 = new myList<int>();
+            myList<int> andrewslist3 = new myList<int>();
+            andrewslist[0] = 1;
+            andrewslist[1] = 2;
+            andrewslist2[0] = 1;
+            andrewslist2[1] = 2;
+            andrewslist2[2] = 3;
+            andrewslist2[3] = 4;
+            andrewslist2[4] = 5;
+            andrewslist2[5] = 6;
+            andrewslist2[6] = 7;
+            myList<int> actual;
+            myList<int> expected = andrewslist3;
+
+            //act
+            actual = andrewslist3.ZipperDeeDooDah(andrewslist, andrewslist2);
+
+            //assert
+            Assert.AreEqual(expected.ToString(), actual.ToString());
         }
     }
 }

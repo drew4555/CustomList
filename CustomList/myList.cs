@@ -127,12 +127,42 @@ namespace CustomList
             return newlist;
         }
             
-         public void zipperdeedoodah()
+        public myList<T> ZipperDeeDooDah(myList<T> mylist, myList<T> mylist2)
         {
-            for (int index = 0; index < mylist.countoflist; index++)
-            {
+            myList<T> zipList = new myList<T>();
 
-            }
+                if (mylist.countoflist != 0 && !mylist2.Equals(0))
+                {
+                    if (countoflist >= mylist2.countoflist)
+                    {
+                        for (int i = 0; i < countoflist; i++)
+                        {
+                            zipList.AddToMyList(mylist[i]);
+                            if (i < mylist2.countoflist)
+                                zipList.AddToMyList(mylist2[i]);
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < mylist2.countoflist; i++)
+                        {
+                            if (i < countoflist)
+                                zipList.AddToMyList(mylist[i]);
+                            zipList.AddToMyList(mylist2[i]);
+                        }
+                    }
+                }
+                else if (countoflist != 0 && mylist2.Equals(0))
+                {
+                    for (int i = 0; i < countoflist; i++)
+                        zipList.AddToMyList(mylist[i]);
+                }
+                else if (countoflist == 0 && !mylist2.Equals(0))
+                {
+                    for (int i = 0; i < mylist2.countoflist; i++)
+                        zipList.AddToMyList(mylist2[i]);
+                }
+                return zipList;
         }   
         public void display()
         {
